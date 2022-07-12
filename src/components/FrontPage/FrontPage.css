@@ -1,4 +1,4 @@
-/* .frontpage {
+.frontpage {
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -17,9 +17,9 @@
 
 .img-fluid {
     padding-left: 3%;
-    padding-top: 2%;
+    padding-top: 8%;
 }
 
 .mb-2 {
     margin-left: 40%;
-} */
+}

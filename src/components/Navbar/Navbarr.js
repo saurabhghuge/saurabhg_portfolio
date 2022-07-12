@@ -88,24 +88,43 @@ const Navbarr = () => {
             <Nav.Item>
               <Nav.Link
                 as={Link}
+                to="/experience"
+                // href="#Experience"
+                // className="nav-link"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Experience
+              </Nav.Link>
+            </Nav.Item>
+
+
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/blogs"
+                // href="#Experience"
+                // className="nav-link"
+                onClick={() => updateExpanded(false)}
+              >
+                <ImBlog style={{ marginBottom: "2px" }} /> Blogs
+              </Nav.Link>
+            </Nav.Item>
+{/* 
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
 
-            <Nav.Item>
-              <Nav.Link
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ImBlog style={{ marginBottom: "2px" }} /> Blogs
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className="fork-btn">
+            {/* <Nav.Item className="fork-btn">
               <Button
                 href=""
                 target="_blank"
@@ -114,7 +133,7 @@ const Navbarr = () => {
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
-            </Nav.Item>
+            </Nav.Item> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,6 +1,10 @@
 import React from "react";
 import './FrontPage.css';
-import { ReactComponent as CoderImg } from './images/coder.svg';
+import { ReactComponent as CoderImg } from './images/programmer2.svg';
+import Projects  from "../Projects/Projects";
+import Experience from "../Experience/Experience";
+import Blogs from "../Blogs/Blogs";
+
 
 import { Button } from "react-bootstrap";
 
@@ -28,7 +32,12 @@ const FrontPage= ()=>{
                     </div>
                 </div>
             </section>
+            <Projects />
+            <Experience/>
+            <Blogs/>
+
         </div>
+        
     )
 }
 

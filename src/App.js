@@ -1,6 +1,12 @@
 import './App.css';
 import Navbarr from './components/Navbar/Navbarr';
 import FrontPage from './components/FrontPage/FrontPage';
+import Projects from './components/Projects/Projects';
+import Experience from './components/Experience/Experience';
+import Blogs from './components/Blogs/Blogs';
+
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -14,10 +20,14 @@ function App() {
       {/* <FrontPage/> */}
       <Router>
       <Navbarr/>
+      {/* <FrontPage />
+      <Projects /> */}
         <Routes>
           <Route path="/" element={<FrontPage />} />
-          {/* <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/project" element={<Projects />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/blogs" element={<Blogs />} />
+          {/* <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/"/>} /> */}
         </Routes>
