@@ -1,0 +1,22 @@
+.contact{
+    width: 100vw;
+    height: auto;
+}
+
+.emailbox, .subject{
+    border-radius: 7px 7px 7px 7px;
+    
+}
+
+.send-message {
+    margin-top: 2%;
+}
+
+.icon {
+    width: 7vw;
+    height: 7vh;
+}
+span {
+    display: inline-block; /* change the display type           */
+    margin: 10px 10px;        /* apply the needed vertical margins */
+}

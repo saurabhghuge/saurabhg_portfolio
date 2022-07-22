@@ -1,12 +1,14 @@
 .frontpage {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 #img {
     height: 50%;
 }
 
+.sectiontopmargin{
+    margin-top: 50px;
+}
 .text {
     color: white;
     margin-top: 10%;
@@ -17,7 +19,7 @@
 
 .img-fluid {
     padding-left: 3%;
-    padding-top: 8%;
+    padding-top: 3%;
 }
 
 .mb-2 {

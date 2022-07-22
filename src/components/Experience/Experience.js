@@ -17,7 +17,7 @@ const Experience = () => {
         <div className="experience bg-dark" id="Experience">
             <div className="container">
                 <br></br>
-                <h1 className="text-start text-light">
+                <h1 className="text-start text-light sectiontopmargin">
                     Experience
                 </h1>
                 <br></br>

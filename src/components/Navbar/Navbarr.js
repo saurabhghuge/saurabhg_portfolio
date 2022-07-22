@@ -57,16 +57,15 @@ const Navbarr = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+              <Nav.Link rel="noopener noreferrer" href="#Home" className="nav-item">
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
-                to="/about"
-                onClick={() => updateExpanded(false)}
+              rel="noopener noreferrer" href="#About" className="nav-item"
+
               >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
@@ -74,9 +73,7 @@ const Navbarr = () => {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
+            rel="noopener noreferrer" href="#Projects" className="nav-item"
               >
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
@@ -87,11 +84,7 @@ const Navbarr = () => {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
-                to="/experience"
-                // href="#Experience"
-                // className="nav-link"
-                onClick={() => updateExpanded(false)}
+                rel="noopener noreferrer" href="#Experience" className="nav-item"
               >
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
@@ -104,13 +97,17 @@ const Navbarr = () => {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
-                to="/blogs"
-                // href="#Experience"
-                // className="nav-link"
-                onClick={() => updateExpanded(false)}
+           rel="noopener noreferrer" href="#Blogs" className="nav-item"
               >
                 <ImBlog style={{ marginBottom: "2px" }} /> Blogs
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+           rel="noopener noreferrer" href="#Contact" className="nav-item"
+              >
+                <ImBlog style={{ marginBottom: "2px" }} /> Contact
               </Nav.Link>
             </Nav.Item>
 {/* 

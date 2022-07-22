@@ -4,7 +4,8 @@ import FrontPage from './components/FrontPage/FrontPage';
 import Projects from './components/Projects/Projects';
 import Experience from './components/Experience/Experience';
 import Blogs from './components/Blogs/Blogs';
-
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
 
 
 import {
@@ -18,20 +19,24 @@ function App() {
     <div className="app">
 
       {/* <FrontPage/> */}
-      <Router>
+      {/* <Router> */}
       <Navbarr/>
-      {/* <FrontPage />
-      <Projects /> */}
-        <Routes>
+      <FrontPage />
+      <About/>
+      <Projects />
+      <Experience />
+      <Blogs />
+      <Contact/>
+        {/* <Routes>
           <Route path="/" element={<FrontPage />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/experience" element={<Experience />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<Blogs />} /> */}
           {/* <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/"/>} /> */}
-        </Routes>
-     </Router>
+        {/* </Routes> */}
+     {/* </Router> */}
     </div>
   );
 }

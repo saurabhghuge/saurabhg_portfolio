@@ -18,7 +18,7 @@ const Blogs = () => {
             <div className='container'>
                 <br></br>
                 <br></br>
-                <h1 className="text-start text-dark">
+                <h1 className="text-start text-dark sectiontopmargin">
                     Blogs
                 </h1>
                 <br></br>
