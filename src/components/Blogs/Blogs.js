@@ -14,7 +14,7 @@ const Blogs = () => {
     ]
 
     return (
-        <div className='blogs' id='Blogs'>
+        <div className='frontpage blogs' id='Blogs'>
             <div className='container'>
                 <br></br>
                 <br></br>

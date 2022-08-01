@@ -1,5 +1,9 @@
 .experience {
     margin: 0;
+    /* width: 100vw;
+    height: auto; */
     width: 100vw;
-    height: auto;
+    height: 100vh;
+    /* padding-bottom: 100px; */
+    margin-bottom: 0px;
 }

@@ -14,7 +14,7 @@ const Experience = () => {
         }
     ]
     return (
-        <div className="experience bg-dark" id="Experience">
+        <div className="frontpage experience bg-dark" id="Experience">
             <div className="container">
                 <br></br>
                 <h1 className="text-start text-light sectiontopmargin">

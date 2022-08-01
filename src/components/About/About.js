@@ -39,6 +39,7 @@ const About = () => {
                                     <blockquote className="blockquote mb-0">
                                     <p style={{ textAlign: "justify" }}>
                                         Hi Everyone, I am <span className="purple">Saurabh Ghuge </span>
+                                        <br/>
                                         from <span className="purple"> Mumbai, India.</span>
                                         <br/>Confident and motivated young individual with a highly adaptive and ambitious attitude. 
                                         <br />Eager to be challenged.<br/>Passionate about every advancement in IT and always curious to know and learn about the latest tools and technologies related to the field.

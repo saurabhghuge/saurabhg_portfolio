@@ -1,406 +1,245 @@
-import './Contact.css'
-import { VerticalTimeline } from 'react-vertical-timeline-component';
-import {
-    FormEvent,
-    memo,
-    useRef,
-    useState,
-    SyntheticEvent,
-    MouseEvent,
-  } from "react";
-import {
-  Container,
-  Grid,
-  Typography,
-  Link,
-  TextField,
-  Button,
-  Hidden,
-  useTheme,
-  Snackbar,
-  IconButton,
-} from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import SendIcon from "@material-ui/icons/Send";
-import CloseIcon from "@material-ui/icons/Close";
-import { makeStyles, createStyles,  } from "@material-ui/core/styles";
+import './Contact.css';
 import { ReactComponent as LinkedIn } from './images/LinkedIn.svg';
 import { ReactComponent as Twitter } from './images/Twitter.svg';
-import { ReactComponent as Instagram } from './images/Instagram.svg';
-import { ReactComponent as Facebook } from './images/Facebook.svg';
-
-  const styles = {
-  
-
-    root: {
-        // backgroundColor: theme.palette.type === "dark" ? "#091c34" : "#ccff90",
-        // paddingBottom: theme.spacing(5),
-      },
-      wave: {
-        width: "100%",
-        // height: theme.spacing(50),
-        // [theme.breakpoints.down("md")]: {
-        //   height: theme.spacing(25),
-        // },
-      },
-      left: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      },
-      leftContainer: {
-        flexGrow: 1,
-      },
-      iconsGrid: {
-        flexGrow: 1,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        // paddingTop: theme.spacing(5),
-        // paddingBottom: theme.spacing(5),
-      },
-      icon: {
-        // marginRight: theme.spacing(2),
-      },
-      socialItem: {
-        display: "flex",
-        alignItems: "center",
-        // marginTop: theme.spacing(1),
-        // marginBottom: theme.spacing(1),
-        "&:hover": {
-          textDecoration: "none",
-          // color: theme.palette.secondary.light,
-        },
-      },
-      illustrationContainer: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      },
-      illustration: {
-        width: "80%",
-      },
-      sendButton: {
-        // marginTop: theme.spacing(2),
-      },
-}
-
+import { ReactComponent as Github } from './images/Github.svg';
+import { ReactComponent as Medium } from './images/Medium.svg';
+import { useForm } from 'react-hook-form';
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const Contact = () => {
-    // const [open, setOpen] = useState(false);
-    // const [message, setMessage] = useState("Message Sent");
-    // const classes = useStyles();
-    // const theme = usetheme();
-    // const nameRef = useRef<HTMLInputElement>(null!);
-    // const emailRef = useRef<HTMLInputElement>(null!);
-    // const messageRef = useRef<HTMLInputElement>(null!);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm();
   
-    // const handleClick = () => {
-    //   setOpen(true);
-    // };
+  // Function that displays a success toast on bottom right of the page when form submission is successful
+  const toastifySuccess = () => {
+    toast('Form sent!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      className: 'submit-feedback success',
+      toastId: 'notifyToast'
+    });
+  };
   
-    // const handleClose = (
-    //   _event= SyntheticEvent | MouseEvent,
-    //   reason = string
-    // ) => {
-    //   if (reason === "clickaway") {
-    //     return;
-    //   }
-    //   setOpen(false);
-    // };
-  
-    // const handleFormSubmit = (e=FormEvent<HTMLFormElement>) => {
-    //   e.preventDefault();
-    //   const formData = new FormData();
-    //   formData.append("name", nameRef.current.value);
-    //   formData.append("email", emailRef.current.value);
-    //   formData.append("message", messageRef.current.value);
-    //   const url= RequestInfo = process.env.NEXT_PUBLIC_FORMSPREE_URL;
-    //   fetch(url, {
-    //     method: "POST",
-    //     body: formData,
-    //     headers: {
-    //       Accept: "application/json",
-    //     },
-    //   })
-    //     .then((res) => {
-    //       if (!res.ok) {
-    //         throw new Error(`Status Code Error ${res.status}`);
-    //       }
-    //       return res.json();
-    //     })
-    //     .then((_data) => {
-    //       setOpen(true);
-    //       nameRef.current.value = "";
-    //       emailRef.current.value = "";
-    //       messageRef.current.value = "";
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //       setMessage("Error sending message");
-    //       setOpen(true);
-    //     });
-    // };
+  // Function called on submit that uses emailjs to send email of valid contact form
+  const onSubmit = async (data) => {
+    // Destrcture data object
+    const { name, email, subject, message } = data;
+    try {
+      const templateParams = {
+        name,
+        email,
+        subject,
+        message
+      };
+//       emailjs.sendForm('service_vlr2okj', 'template_gc9cjno', formData.current, 'aRM1TpD8f996CJE8p')
 
-    return (
+      await emailjs.send(
+        'service_vlr2okj',
+        'template_gc9cjno',
+        templateParams,
+        'aRM1TpD8f996CJE8p'
+      );
 
+      reset();
+      toastifySuccess();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-      <div className="contact " id="Contact">
-      <Container>
-         <Grid container>
+  return (
+    <div className='frontpage bg-dark contact'  id="Contact">
 
-          <Grid item md={6} sm={12}>
-              <Typography variant="h3" align="left">
-                Say Hi
-              </Typography>
-              <form onSubmit="">
-                <TextField
-                  label="Name"
-                  fullWidth
-                  margin="dense"
-                  variant="outlined"
-                  color="secondary"
-                  inputRef=""
-                  required
-                  id="form-name"
-                />
-                <TextField
-                  label="Email"
-                  type="email"
-                  fullWidth
-                  margin="dense"
-                  variant="outlined"
-                  color="secondary"
-                  inputRef=""
-                  required
-                  placeholder="So I can get back to you"
-                  id="form-email"
-                />
-                <TextField
-                  label="Message"
-                  fullWidth
-                  margin="dense"
-                  multiline
-                  rows={5}
-                  variant="outlined"
-                  color="secondary"
-                  inputRef=""
-                  required
-                  id="form-message"
-                />
-                <Button
-                  variant="outlined"
-                  className=""
-                  color="secondary"
-                  endIcon={<SendIcon />}
-                  type="submit"
-                >
-                  send
-                </Button>
-              </form>
-              
-            </Grid>
-            <Grid item md={6} sm={12}>
-            <br></br>
-          <h1 className="text-start text-light">
-          Connect with me 
-          </h1>
-          <br></br>
-          <div>
-              <span className='icons'>
-                  <a href="">
-                      <LinkedIn className='icon' />
-                  </a>
-              </span>
-              <span className='icons'>
-                  <a href="">
-                      <Twitter className='icon' />
-                  </a>
-              </span>
-              <span className='icons'>
-                  <a href="">
-                      <Instagram className='icon' />
-                  </a>
-              </span>
-              <span className='icons'>
-                  <a href="">
-                      <Facebook className='icon' />
-                  </a>
-              </span>
+<div className='ContactForm'>
+      <div className='container'>
+      <div className='col-12 text-center copyright mt-5'>
+           {/* <h1 className="main-color">
+           Connect with me 
+           </h1> */}
+           <h1 className='section-title'>
+              <span className='main-color'>Connect with me </span>
+            </h1>
+           
+               <span className='icons'>
+                   <a href="https://www.linkedin.com/in/saurabhghuge/">
+                       <LinkedIn className='icon' />
+                   </a>
+               </span>
+               <span className='icons'>
+                   <a href="https://github.com/saurabhghuge">
+                       <Github className='icon' />
+                   </a>
+               </span>
+               <span className='icons'>
+                   <a href="https://medium.com/@saurabhghuge/">
+                       <Medium className='icon' />
+                   </a>
+               </span>
+               <span className='icons'>
+                   <a href="https://twitter.com/SaurabhGhuge16">
+                       <Twitter className='icon' />
+                   </a>
+               </span>
+
+           </div>
+        {/* Row 1 */}
+        <div className='row'>
+          <div className='col-12'>
+            <h1 className='section-title'>
+              <span className='main-color'>Contact  Me</span>
+            </h1>
           </div>
+        </div>
+        {/* Row 2 */}
+        <div className='row'>
+          <div className='col-lg-4'>
+            <div className='contact-info'>
+              <div className='phone-info'>
+                {/* <FontAwesomeIcon
+                  icon={faPhone}
+                  className='contact-icon'
+                  fixedWidth
+                ></FontAwesomeIcon> */}
+                <span>Give me a call:</span>
+                <p>+91 8108381738</p>
+              </div>
+            </div>
+          </div>
+          <div className='col-lg-4'>
+            <div className='contact-info'>
+              <div className='email-info'>
+                {/* <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className='contact-icon'
+                  fixedWidth
+                ></FontAwesomeIcon> */}
+                <span>Send me an email:</span>
+                <p>itsgsaurabh@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div className='col-lg-4'>
+            <div className='contact-info'>
+              <div className='location-info'>
+                {/* <FontAwesomeIcon
+                  icon={faMapMarkerAlt}
+                  className='contact-icon'
+                  fixedWidth
+                ></FontAwesomeIcon> */}
+                <span>Currently located:</span>
+                <p>Mumbai,India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-              </Grid>
-              </Grid>
+      <div className='Contact container'>
+        <div className='row'>
+          <div className='col-12 text-center'>
+            <div className='contactForm'>
+              <form id='contact-form' className='contact-form' onSubmit={handleSubmit(onSubmit)} noValidate>
+                {/* Row 1 of form */}
+                <div className='row formRow'>
+                  <div className='col-6'>
+                    <input
+                      type='text'
+                      name='name'
+                      {...register('name', {
+                        required: { value: true, message: 'Please enter your name' },
+                        maxLength: {
+                          value: 30,
+                          message: 'Please use 30 characters or less'
+                        }
+                      })}
+                      className='form-control formInput'
+                      placeholder='Name'
+                    ></input>
+                    {errors.name && <span className='errorMessage'>{errors.name.message}</span>}
+                  </div>
+                  <div className='col-6'>
+                    <input
+                      type='email'
+                      name='email'
+                      {...register('email', {
+                        required: true,
+                        pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                      })}
+                      className='form-control formInput'
+                      placeholder='Email address'
+                    ></input>
+                    {errors.email && (
+                      <span className='errorMessage'>Please enter a valid email address</span>
+                    )}
+                  </div>
+                </div>
+                {/* Row 2 of form */}
+                {/* <div className='row formRow'>
+                  <div className='col'>
+                    <input
+                      type='text'
+                      name='subject'
+                      {...register('subject', {
+                        required: { value: true, message: 'Please enter a subject' },
+                        maxLength: {
+                          value: 75,
+                          message: 'Subject cannot exceed 75 characters'
+                        }
+                      })}
+                      className='form-control formInput'
+                      placeholder='Subject'
+                    ></input>
+                    {errors.subject && (
+                      <span className='errorMessage'>{errors.subject.message}</span>
+                    )}
+                  </div>
+                </div> */}
+                {/* Row 3 of form */}
+                <div className='row formRow'>
+                  <div className='col'>
+                    <textarea
+                      rows={3}
+                      name='message'
+                      {...register('message', {
+                        required: true
+                      })}
+                      className='form-control formInput'
+                      placeholder='Message'
+                    ></textarea>
+                    {errors.message && <span className='errorMessage'>Please enter a message</span>}
+                  </div>
+                </div>
+                <button className='submit-btn' type='submit'>
+                  Submit
+                </button>
+              </form>
+            </div>
+            <ToastContainer />
+          </div>
+        </div>
+      </div>
 
-          <br></br>
-          <br></br>
-      </Container>
-  </div>
+      <div className='Footer'>
+      <div className='col-12 text-center purple copyright mt-5'>
+        <p>Copyright &copy; {new Date().getFullYear()} Saurabh Ghuge</p>
+      </div>
 
 
-      //   <footer className={styles.root} id = "Contact">
-      //   <img
-      //     className={styles.wave}
-      //     src=""
-      //     alt="wave for styling and separating sections"
-      //   />
-      //   <Container id="contact">
-      //     <Grid container>
-      //       <Grid item md={6} sm={12}>
-      //         <Typography variant="h3" align="left">
-      //           Connect with me
-      //         </Typography>
-      //         <article
-      //           itemScope
-      //           itemType="http://schema.org/Author"
-      //           className={styles.left}
-      //         >
-      //           <Grid container className={styles.leftContainer}>
-      //             <Grid item md={6} sm={6} className={styles.iconsGrid}>
-      //               <Link
-      //                 className={styles.socialItem}
-      //                 href=""
-      //                 target="_blank"
-      //                 rel="noopener noreferrer"
-      //                 color="inherit"
-      //               >
-      //                 <GitHubIcon className={styles.icon} fontSize="large" />
-  
-      //                 <Typography>Github</Typography>
-      //               </Link>
-  
-      //               <Link
-      //                 className={styles.socialItem}
-      //                 href=""
-      //                 target="_blank"
-      //                 rel="noopener noreferrer"
-      //                 color="inherit"
-      //               >
-      //                 <LinkedInIcon className={styles.icon} fontSize="large" />
-  
-      //                 <Typography>LinkedIn</Typography>
-      //               </Link>
-  
-      //               <Link
-      //                 className={styles.socialItem}
-      //                 href=""
-      //                 target="_blank"
-      //                 rel="noopener noreferrer"
-      //                 color="inherit"
-      //               >
-      //                 <TwitterIcon className={styles.icon} fontSize="large" />
-  
-      //                 <Typography>Twitter</Typography>
-      //               </Link>
-  
-      //               <Link
-      //                 className={styles.socialItem}
-      //                 href="mailto:"
-      //                 target="_blank"
-      //                 rel="noopener noreferrer"
-      //                 color="inherit"
-      //               >
-      //                 <MailIcon fontSize="large" className={styles.icon} />
-      //                 <Typography>itsgsaurabh@gmail.com</Typography>
-      //               </Link>
-      //             </Grid>
-  
-      //             <Grid
-      //               item
-      //               md={6}
-      //               sm={6}
-      //               className={styles.illustrationContainer}
-      //             >
-      //               <Hidden xsDown>
-      //                 <img
-      //                   src="/assets/message.svg"
-      //                   className={styles.illustration}
-      //                   alt="message illustration"
-      //                 />
-      //               </Hidden>
-      //             </Grid>
-      //           </Grid>
-      //         </article>
-      //       </Grid>
-            // <Grid item md={6} sm={12}>
-            //   <Typography variant="h3" align="left">
-            //     Say Hi
-            //   </Typography>
-            //   <form onSubmit="">
-            //     <TextField
-            //       label="Name"
-            //       fullWidth
-            //       margin="dense"
-            //       variant="outlined"
-            //       color="secondary"
-            //       inputRef=""
-            //       required
-            //       id="form-name"
-            //     />
-            //     <TextField
-            //       label="Email"
-            //       type="email"
-            //       fullWidth
-            //       margin="dense"
-            //       variant="outlined"
-            //       color="secondary"
-            //       inputRef=""
-            //       required
-            //       placeholder="So I can get back to you"
-            //       id="form-email"
-            //     />
-            //     <TextField
-            //       label="Message"
-            //       fullWidth
-            //       margin="dense"
-            //       multiline
-            //       rows={5}
-            //       variant="outlined"
-            //       color="secondary"
-            //       inputRef=""
-            //       required
-            //       id="form-message"
-            //     />
-            //     <Button
-            //       variant="outlined"
-            //       className=""
-            //       color="secondary"
-            //       endIcon={<SendIcon />}
-            //       type="submit"
-            //     >
-            //       send
-            //     </Button>
-            //   </form>
-            //   {/* <Snackbar
-            //     anchorOrigin={{
-            //       vertical: "bottom",
-            //       horizontal: "left",
-            //     }}
-            //     open={open}
-            //     autoHideDuration={6000}
-            //     onClose={handleClose}
-            //     message={message}
-            //     action={
-            //       <>
-            //         <IconButton
-            //           size="small"
-            //           aria-label="close"
-            //           color="inherit"
-            //           onClick={handleClose}
-            //         >
-            //           <CloseIcon fontSize="small" />
-            //         </IconButton>
-            //       </>
-            //     }
-            //   />  */}
-            // </Grid>
-      //     </Grid>
-      //   </Container>
-      // </footer>
-    );
-}
+           
+    </div>
+    </div>
+  );
+};
 
 export default Contact;

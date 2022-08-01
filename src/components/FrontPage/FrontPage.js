@@ -13,17 +13,19 @@ import { Button } from "react-bootstrap";
 const styles = {
     nameStyle: {
       fontSize: '5em',
+
     },
     inlineChild: {
       display: 'inline-block',
     },
     mainContainer: {
-      margin:'200px',
+    //   margin: '50px,0px,0px,0px',
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      
     },
   };
 const data = {
@@ -33,8 +35,9 @@ const data = {
 const FrontPage= ()=>{
     return (
         <div className="frontpage bg-dark  " id = 'Home'>
+            <div className="homepage">
             <section className="bg-dark text-center text-light p-5  ">
-                <div className="container sectiontopmargin ">
+                <div className="container">
                 {/* <div className="d-sm-flex"> */}
                         <div className="text-start">
                             {/* <h1>Hi, I am a <span className="text-warning">Software Engineer</span></h1> */}
@@ -66,14 +69,14 @@ const FrontPage= ()=>{
                                             </div>
                                         </div>
                  
-                                    <div className="sectiontopmargin" >
+                                    <div className="scrollDownBox" >
 
-                                    <a href="#About">
-                                        <Button variant="primary" size="md">
-                                           Scroll Down 
-                                        </Button>
-                                    </a>
-                                </div>
+                                        <a href="#About">
+                                            <Button variant="primary" size="md">
+                                            Scroll Down 
+                                            </Button>
+                                        </a>
+                                    </div>
                                     {/* <Social /> */}
                                 </div>
                                 {/* </Fade> */}
@@ -87,7 +90,7 @@ const FrontPage= ()=>{
             {/* <Projects />
             <Experience/>
             <Blogs/> */}
-
+            </div>
         </div>
         
     )

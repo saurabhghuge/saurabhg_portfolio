@@ -1,13 +1,29 @@
 .frontpage {
-    width: 100%;
-    height: 100%;
+    /* margin: 0px; */
+    /* width: 100%;
+    height: 100%; */
+
+    width: 100vw;
+    height: 100vh;
+    /* padding: 100%; */
+    padding-top: 75px;
+    /* margin-bottom: 0px;
+    position: relative; */
+    /* border-bottom: 90px; */
 }
+/* .homepage {
+    padding-top: 100px;
+    padding-bottom: 150px;
+} */
 #img {
     height: 50%;
 }
 
-.sectiontopmargin{
+/* .sectiontopmargin{
     margin-top: 50px;
+} */
+.scrollDownBox {
+    padding-top: 50px;
 }
 .text {
     color: white;
