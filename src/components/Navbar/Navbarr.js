@@ -1,5 +1,5 @@
 import './Navbar.css';
-
+import myPdf from "../../static/Saurabh-Ghuge-Resume.pdf";
 import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -9,11 +9,14 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
 import { ImBlog } from "react-icons/im";
+import {TiContacts} from "react-icons/ti";
+import {MdWorkOutline} from "react-icons/md";
+
 import {
   AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
-  AiOutlineUser,
+  AiOutlineUser,AiOutlineContacts,
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
@@ -86,7 +89,7 @@ const Navbarr = () => {
               <Nav.Link
                 rel="noopener noreferrer" href="#Experience" className="nav-item"
               >
-                <AiOutlineFundProjectionScreen
+                <MdWorkOutline
                   style={{ marginBottom: "2px" }}
                 />{" "}
                 Experience
@@ -107,15 +110,22 @@ const Navbarr = () => {
               <Nav.Link
            rel="noopener noreferrer" href="#Contact" className="nav-item"
               >
-                <ImBlog style={{ marginBottom: "2px" }} /> Contact
+                <TiContacts style={{ marginBottom: "2px" }} /> Contact
               </Nav.Link>
             </Nav.Item>
-{/* 
+
             <Nav.Item>
               <Nav.Link
-                as={Link}
-                to="/resume"
-                onClick={() => updateExpanded(false)}
+                rel="noopener noreferrer" href={myPdf} className="nav-item" target="_blank" 
+              >
+                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+              </Nav.Link>
+            </Nav.Item>
+            {/* <Nav.Item>
+              <Nav.Link
+                // as={Link}
+                // to="/resume"
+                // onClick={() => updateExpanded(false)}
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
