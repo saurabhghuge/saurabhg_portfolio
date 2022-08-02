@@ -8,6 +8,8 @@ import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+
+
 const Contact = () => {
   const {
     register,
@@ -34,6 +36,10 @@ const Contact = () => {
   const onSubmit = async (data) => {
     // Destrcture data object
     const { name, email, subject, message } = data;
+    // const {SERVICE_ID} = process.env;
+
+
+
     try {
       const templateParams = {
         name,
@@ -42,12 +48,11 @@ const Contact = () => {
         message
       };
 //       emailjs.sendForm('service_vlr2okj', 'template_gc9cjno', formData.current, 'aRM1TpD8f996CJE8p')
-
       await emailjs.send(
-        'service_vlr2okj',
-        'template_gc9cjno',
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
         templateParams,
-        'aRM1TpD8f996CJE8p'
+        process.env.REACT_APP_PUBLIC_KEY
       );
 
       reset();
