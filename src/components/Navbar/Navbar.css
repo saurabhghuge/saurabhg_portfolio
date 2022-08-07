@@ -302,7 +302,7 @@ html {
     .Typewriter__wrapper {
       font-size: 1.4em !important;
       font-weight: 500 !important;
-      position: absolute !important;
+      /* position: absolute !important; */
     }
     .Typewriter__cursor {
       display: none !important;
@@ -418,7 +418,9 @@ html {
   .footer-body {
     text-align: center !important;
   }
-  
+  .blockquote {
+    font-size: 1.25rem;
+  }
   @media (max-width: 767px) {
     .footer-copywright {
       text-align: center !important;
@@ -426,6 +428,10 @@ html {
   
     .footer-body {
       text-align: center !important;
+    }
+
+    .blockquote {
+      font-size: 1rem;
     }
   }
   
@@ -440,7 +446,7 @@ html {
     margin-bottom: 0.5em !important;
     padding: 0 !important;
   }
-  
+
   .blockquote-footer {
     color: #a588c0 !important;
   }

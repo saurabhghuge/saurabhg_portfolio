@@ -37,7 +37,7 @@ const Projects = () => {
             <div className='container '>
             <br></br>
             <br></br>
-                <h1 className="text-start text-dark sectiontopmargin">
+                <h1 className="text-start text-light sectiontopmargin">
                     Projects
                 </h1>
                 <br></br>
