@@ -27,7 +27,7 @@ const styles = {
 const About = () => {
     return (
         <>
-            <div className="frontpage bg-dark " id="About">
+            <div className="frontpage  bg-dark " style={{ height: "100%" }} id="About">
                 <Container className="" >
                     <Row>
                         <Col style={styles.introTextContainer} >
