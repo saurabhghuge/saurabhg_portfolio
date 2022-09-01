@@ -49,7 +49,7 @@ const About = () => {
                                     </p>
                                     <ul>
                                         <li className="about-activity">
-                                        <ImPointRight /> Playing Games
+                                        <ImPointRight /> Playing FIFA
                                         </li>
                                         <li className="about-activity">
                                         <ImPointRight /> Reading History
