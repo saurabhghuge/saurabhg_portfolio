@@ -17,7 +17,7 @@ const Blog = ({ blogName, description, date, link }) => {
                 <br></br>
                 <a href= {link}>
                     <Button variant="primary" size="sm">
-                        Got to Blog
+                        Go to Blog
                     </Button>
                 </a>
             </p>
